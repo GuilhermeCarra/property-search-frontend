@@ -10,7 +10,7 @@ function App() {
         <Route path="/login">
           <Auth />
         </Route>
-        <Route path="/search">
+        <Route path="/">
           <Search />
         </Route>
       </Switch>
