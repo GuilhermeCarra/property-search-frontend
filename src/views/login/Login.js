@@ -25,7 +25,7 @@ function Login() {
               </div>
             </div>
 
-            <div className="col s12 m6 orange center white-text h-100">
+            <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
               <div className="section">
                 <h2>Hello, friend!</h2>
                 <p>Enter your personal details and start a journey with us</p>
