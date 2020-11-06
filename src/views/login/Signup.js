@@ -4,7 +4,7 @@ function Signup() {
         <div className="container login-card">
           <div className="row z-depth-3">
 
-            <div className="col s12 m6 orange center white-text h-100">
+            <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
               <div className="section">
                 <h2>Welcome back!</h2>
                 <p>To keep connected with us please login with your personal info</p>
