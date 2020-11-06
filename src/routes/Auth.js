@@ -8,13 +8,13 @@ function Auth() {
     <Switch>
       <Route exact path="/login/">
           <Login />
-        </Route>
-        <Route path="/login/signup">
-          <Signup />
-        </Route>
-        <Route path="/login/reset">
-          <Reset />
-        </Route>
+      </Route>
+      <Route path="/login/signup">
+        <Signup />
+      </Route>
+      <Route path="/login/reset">
+        <Reset />
+      </Route>
     </Switch>
   );
 }
