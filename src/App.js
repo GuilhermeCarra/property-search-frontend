@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.scss';
 import Auth from './routes/Auth.js'
+import Search from './routes/Search.js'
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
       <Switch>
         <Route path="/login">
           <Auth />
+        </Route>
+        <Route path="/search">
+          <Search />
         </Route>
       </Switch>
     </Router>
