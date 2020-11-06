@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Login() {
     return (
       <>
@@ -20,7 +22,7 @@ function Login() {
                     <label for="password">Password</label>
                   </div>
                 </div>
-                <p>Forgot your password?</p>
+                <p><Link to="/login/reset">Forgot your password?</Link></p>
                 <a className="waves-effect waves-light btn-large orange lighten-1">Sign in</a>
               </div>
             </div>
@@ -29,7 +31,7 @@ function Login() {
               <div className="section">
                 <h2>Hello, friend!</h2>
                 <p>Enter your personal details and start a journey with us</p>
-                <a className="waves-effect waves-light btn-large orange lighten-1">Sign up</a>
+                <Link to="/login/signup" className="waves-effect waves-light btn-large orange lighten-1">Sign up</Link>
               </div>
             </div>
 

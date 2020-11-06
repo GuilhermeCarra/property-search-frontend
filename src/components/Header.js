@@ -4,7 +4,7 @@ function Header() {
     return(
     <nav>
       <div class="nav-wrapper grey lighten-3 z-depth-1">
-        <a href="#" class="brand-logo orange-text left">Logo</a>
+        <Link to="/" className="brand-logo orange-text left">Logo</Link>
         <ul id="nav-mobile" class="right">
           <li><Link to="/login">Sign in</Link></li>
           <li><Link to="/login/signup">Sign up</Link></li>
