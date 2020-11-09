@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Filters() {
     const [queryString, setQueryString] = useState(null);
@@ -31,7 +31,7 @@ function Filters() {
             <div className="row">
                 <div className="input-field col s8 m3">
                     <input placeholder="Local" id="local" type="text" className="validate" onChange={(e) => setFormData({...formData, localization: e.target.value})}/>
-                    <label for="local"></label>
+                    <label htmlFor="local"></label>
                     <div className="container section">
                         <div className="row">
                             <button className="waves-effect waves-light btn-small" onClick={() => setExtraFilters(!extraFilters)}>More filters +</button>
@@ -105,11 +105,11 @@ function Filters() {
                 <div className="col s12 center-align">
                     <div className="input-field col s6 m4 offset-m2">
                         <input id="min_price" type="number" className="validate" name="min_price" onChange={(e) => setFormData({...formData, min_price: e.target.value})}/>
-                        <label for="min_price">Min Price</label>
+                        <label htmlFor="min_price">Min Price</label>
                     </div>
                     <div className="input-field col s6 m4">
                         <input id="last_name" type="number" className="validate" onChange={(e) => setFormData({...formData, max_price: e.target.value})}/>
-                        <label for="last_name">Max Price</label>
+                        <label htmlFor="last_name">Max Price</label>
                     </div>
                 </div>
             </div>

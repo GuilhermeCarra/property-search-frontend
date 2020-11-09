@@ -4,16 +4,22 @@ import store from "./store/store";
 import './App.scss';
 import Auth from './routes/Auth.js'
 import Search from './routes/Search.js'
+import Home from './views/home/Main.js';
+import Header from './components/Header.js';
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <Switch>
+          <Route exact path="/">
+            <Header />
+            <Home />
+          </Route>
           <Route path="/login">
             <Auth />
           </Route>
-          <Route path="/">
+          <Route path="/search">
             <Search />
           </Route>
         </Switch>
