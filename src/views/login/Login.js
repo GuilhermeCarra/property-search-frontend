@@ -6,22 +6,15 @@ import { loginRequest } from '../../config/config';
 import { validateEmail } from "../../config/utils";
 
 function Login() {
+  const dispatch = useDispatch();
   const { user, loading, error } = useSelector((state) => state);
 
   const [credentials, setCredentials] = useState({password: null, email: null});
   const [validationMsg, setValidationMsg] = useState(null);
 
   function handleLogin() {
-    const {email, password} = credentials;
-    if (password === null || email === null) {
-      setValidationMsg('Please, fill all fields');
-    } else if(!validateEmail(email)) {
-      setValidationMsg('Invalid email');
-    } else if (password.length < 6) {
-      setValidationMsg('Password must have at least 6 digits');
-    } else {
-      setValidationMsg(null);
-    }
+      let options = loginRequest(credentials);
+      dispatch(loginValidate(options));
   }
 
   return (
@@ -46,9 +39,11 @@ function Login() {
                 </div>
               </div>
               <span
-                className={`status-msg white-text red z-depth-1 scale-transition ${validationMsg ? "scale-in" : "scale-out" }`}
+                className={`status-msg white-text red z-depth-1 scale-transition ${validationMsg || error || loading ? "scale-in" : "scale-out" }`}
               >
-                  {validationMsg}
+                  {validationMsg && <>{validationMsg}</>}
+                  {loading && <>Validating credentials...</>}
+                  {error && <>{error.message}</>}
               </span>
               <p><Link to="/login/reset">Forgot your password?</Link></p>
               <button className="waves-effect waves-light btn-large orange lighten-1" onClick={handleLogin}>
