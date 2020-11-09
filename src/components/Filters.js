@@ -120,7 +120,7 @@ function Filters() {
                             <select className="browser-default" name="date" onChange={(e) => setFormData({...formData, date: e.target.value})}>
                                 <option value="" disabled selected>Publication date</option>
                                 <option value="hours">Last 48 hours</option>
-                                <option value="week">Las week</option>
+                                <option value="week">Last week</option>
                                 <option value="month">Last month</option>
                             </select>
                     </div>
