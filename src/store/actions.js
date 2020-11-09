@@ -7,6 +7,7 @@ const Types = {
     FETCH_DATA_STARTED: "FETCH_DATA_STARTED",
     FETCH_DATA_ERROR: "FETCH_DATA_ERROR",
     FETCH_DATA_SUCCESSFUL: "FETCH_DATA_SUCCESSFUL",
+    REGISTER_SUCCESSFUL: "REGISTER_SUCCESSFUL",
     CLEAR_ERROR: "CLEAR_ERROR"
 };
 
@@ -99,4 +100,30 @@ const loginValidate = (options) => {
     };
 };
 
-export { fetchInit, loginValidate, Types };
+// successful ✅
+const registerSuccessful = (data) => ({
+    type: Types.REGISTER_SUCCESSFUL,
+    payload: {
+        data: data.data,
+        loading: false,
+        error: false
+    },
+});
+
+const registerValidate = (options) => {
+    return async function (dispatch) {
+        dispatch(loginValidationStarted());
+
+        return axios(options)
+            .then((response) => {
+                const { data } = response;
+                dispatch(registerSuccessful(data));
+            })
+            .catch((error) => {
+                dispatch(loginError(error.response.data));
+                setTimeout(() => dispatch(clearError()),6000);
+            });
+    };
+};
+
+export { fetchInit, loginValidate, registerValidate, Types };

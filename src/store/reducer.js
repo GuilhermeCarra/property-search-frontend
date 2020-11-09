@@ -5,7 +5,7 @@ const initialState = {
   user: getToken(),
   data: null,
   loading: false,
-  error: false
+  error: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -31,6 +31,13 @@ export default function reducer(state = initialState, action) {
             loading: action.payload.loading,
             error: action.payload.error,
         };
+    case Types.REGISTER_SUCCESSFUL:
+        return {
+            ...state,
+            data: action.payload.data,
+            loading: action.payload.loading,
+            error: action.payload.error,
+        };
 
     // fetch data dispatch
     case Types.FETCH_DATA_ERROR:
@@ -53,6 +60,7 @@ export default function reducer(state = initialState, action) {
             loading: action.payload.loading,
             error: action.payload.error,
         };
+
     case Types.CLEAR_ERROR:
         return {
             ...state,
