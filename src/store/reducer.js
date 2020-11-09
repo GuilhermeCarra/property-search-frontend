@@ -66,6 +66,11 @@ export default function reducer(state = initialState, action) {
             ...state,
             error: null
         }
+    case Types.CLEAR_DATA:
+        return {
+            ...state,
+            data: null
+        }
 
     default:
       return state;
