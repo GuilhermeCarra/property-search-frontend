@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, Redirect  } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loginValidate } from '../../store/actions';
 import { loginRequest } from '../../config/config';
-import { validateEmail } from "../../config/utils";
 
 function Login() {
   const dispatch = useDispatch();
@@ -60,6 +59,7 @@ function Login() {
 
         </div>
       </div>
+      {user && <Redirect to='/' />}
     </>
   );
 }
