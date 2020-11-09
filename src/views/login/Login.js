@@ -1,44 +1,74 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { loginValidate } from '../../store/actions';
+import { loginRequest } from '../../config/config';
+import { validateEmail } from "../../config/utils";
 
 function Login() {
-    return (
-      <>
-        <div className="container login-card">
-          <div className="row z-depth-3">
+  const { user, loading, error } = useSelector((state) => state);
 
-            <div className="col s12 m6 center">
-              <div className="section">
-                <h2>Sign in</h2>
-                <p>or use your account</p>
-                <div className="col s12">
-                  <div className="input-field  col s8 offset-s2">
-                    <input id="email" type="text"/>
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <div className="col s12">
-                  <div className="input-field col s8 offset-s2">
-                    <input id="password" type="password"/>
-                    <label for="password">Password</label>
-                  </div>
-                </div>
-                <p><Link to="/login/reset">Forgot your password?</Link></p>
-                <a className="waves-effect waves-light btn-large orange lighten-1">Sign in</a>
-              </div>
-            </div>
+  const [credentials, setCredentials] = useState({password: null, email: null});
+  const [validationMsg, setValidationMsg] = useState(null);
 
-            <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
-              <div className="section">
-                <h2>Hello, friend!</h2>
-                <p>Enter your personal details and start a journey with us</p>
-                <Link to="/login/signup" className="waves-effect waves-light btn-large orange lighten-1">Sign up</Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </>
-    );
+  function handleLogin() {
+    const {email, password} = credentials;
+    if (password === null || email === null) {
+      setValidationMsg('Please, fill all fields');
+    } else if(!validateEmail(email)) {
+      setValidationMsg('Invalid email');
+    } else if (password.length < 6) {
+      setValidationMsg('Password must have at least 6 digits');
+    } else {
+      setValidationMsg(null);
+    }
   }
+
+  return (
+    <>
+      <div className="container login-card">
+        <div className="row z-depth-3">
+
+          <div className="col s12 m6 center">
+            <div className="section">
+              <h2>Sign in</h2>
+              <p>or use your account</p>
+              <div className="col s12">
+                <div className="input-field  col s8 offset-s2">
+                  <input id="email" type="text" onChange={(e)=>setCredentials({...credentials, email: e.target.value})}/>
+                  <label htmlFor="email">Email</label>
+                </div>
+              </div>
+              <div className="col s12">
+                <div className="input-field col s8 offset-s2">
+                  <input id="password" type="password" onChange={(e)=>setCredentials({...credentials, password: e.target.value})}/>
+                  <label htmlFor="password">Password</label>
+                </div>
+              </div>
+              <span
+                className={`status-msg white-text red z-depth-1 scale-transition ${validationMsg ? "scale-in" : "scale-out" }`}
+              >
+                  {validationMsg}
+              </span>
+              <p><Link to="/login/reset">Forgot your password?</Link></p>
+              <button className="waves-effect waves-light btn-large orange lighten-1" onClick={handleLogin}>
+                Sign in
+              </button>
+            </div>
+          </div>
+
+          <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
+            <div className="section">
+              <h2>Hello, friend!</h2>
+              <p>Enter your personal details and start a journey with us</p>
+              <Link to="/login/signup" className="waves-effect waves-light btn-large orange lighten-1">Sign up</Link>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </>
+  );
+}
 
 export default Login;
