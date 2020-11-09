@@ -10,7 +10,6 @@ function Login() {
   const { user, loading, error } = useSelector((state) => state);
 
   const [credentials, setCredentials] = useState({password: null, email: null});
-  const [validationMsg, setValidationMsg] = useState(null);
 
   function handleLogin() {
       let options = loginRequest(credentials);
@@ -39,9 +38,8 @@ function Login() {
                 </div>
               </div>
               <span
-                className={`status-msg white-text red z-depth-1 scale-transition ${validationMsg || error || loading ? "scale-in" : "scale-out" }`}
+                className={`status-msg white-text red z-depth-1 scale-transition ${error || loading ? "scale-in" : "scale-out" }`}
               >
-                  {validationMsg && <>{validationMsg}</>}
                   {loading && <>Validating credentials...</>}
                   {error && <>{error.message}</>}
               </span>
