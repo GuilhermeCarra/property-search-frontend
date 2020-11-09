@@ -13,12 +13,14 @@ export const loginRequest = function({password, email}) {
     }
 };
 
-export const registerRequest = function({password, email}) {
+export const registerRequest = function({password, email, name}) {
     return {
         method: 'post',
         url: apiDomain + "register",
         data: {
-            
+            name: name,
+            email: email,
+            password: password
         }
     }
 };
