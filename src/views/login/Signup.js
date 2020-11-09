@@ -1,24 +1,18 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { validateEmail } from "../../config/utils";
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { registerRequest } from "../../config/config";
+import { registerValidate } from "../../store/actions";
 
 function Signup() {
+    const dispatch = useDispatch();
+    const { loading, error, data } = useSelector((state) => state);
+
     const [newUser, setNewUser] = useState({password: null, email: null, name: null});
-    const [validationMsg, setValidationMsg] = useState(null);
 
     function handleRegister() {
-      const {email, password, name} = newUser;
-      if (password === null || email === null || name === null) {
-        setValidationMsg('Please, fill all fields');
-      } else if (password === "" || email === "" || name === "") {
-        setValidationMsg('Please, fill all fields');
-      } else if(!validateEmail(email)) {
-        setValidationMsg('Invalid email');
-      } else if (password.length < 6) {
-        setValidationMsg('Password must have at least 6 digits');
-      } else {
-        setValidationMsg(null);
-      }
+        let options = registerRequest(newUser);
+        dispatch(registerValidate(options));
     }
 
     return (
@@ -27,7 +21,7 @@ function Signup() {
           <div className="row z-depth-3">
 
             <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
-              <div className="section">
+              <div className="section col s12">
                 <h2>Welcome back!</h2>
                 <p>To keep connected with us please login with your personal info</p>
                 <Link to="/login" className="waves-effect waves-light btn-large orange lighten-1">Sign in</Link>
@@ -57,9 +51,11 @@ function Signup() {
                   </div>
                 </div>
                 <span
-                  className={`status-msg white-text red z-depth-1 scale-transition ${validationMsg ? "scale-in" : "scale-out" }`}
+                  className={`status-msg white-text red z-depth-1 scale-transition ${error || loading || data ? "scale-in" : "scale-out" }`}
                 >
-                    {validationMsg}
+                    {loading && <>Validating...</>}
+                    {data && <>{data}</>}
+                    {error && <>{error.message}</>}
                 </span>
                 <p></p>
                 <button className="waves-effect waves-light btn-large orange lighten-1" onClick={handleRegister}>Sign Up</button>
