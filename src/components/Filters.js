@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { buildURLQuery} from '../config/utils';
 
 function Filters() {
     const [queryString, setQueryString] = useState(null);
@@ -19,17 +20,15 @@ function Filters() {
         setQueryString(string);
     },[formData,officeForm,houseForm,propertyType]);
 
-    function buildURLQuery (obj) {
-        return Object.entries(obj)
-                .map(pair => pair.map(encodeURIComponent).join('='))
-                .join('&');
+    function handleSearch () {
+
     }
 
     return(
     <div className="section">
         <div className="col s12">
             <div className="row">
-                <div className="input-field col s8 m3">
+                <div className="input-field col s8 m4">
                     <input placeholder="Local" id="local" type="text" className="validate" onChange={(e) => setFormData({...formData, localization: e.target.value})}/>
                     <label htmlFor="local"></label>
                     <div className="container section">
@@ -41,13 +40,13 @@ function Filters() {
                 <div className="col s2">
                     <p>
                         <label onClick={() => setPropertyType('Houses')}>
-                            <input name="prop_type" type="radio" checked={propertyType === "Houses"} />
+                            <input name="prop_type" type="radio" defaultChecked={propertyType === "Houses"} />
                             <span>Houses</span>
                         </label>
                     </p>
                     <p>
                         <label onClick={() => setPropertyType('Offices')}>
-                            <input name="prop_type" type="radio" checked={propertyType === "Offices"} />
+                            <input name="prop_type" type="radio" defaultChecked={propertyType === "Offices"} />
                             <span>Offices</span>
                         </label>
                     </p>
@@ -164,7 +163,7 @@ function Filters() {
             </div>
             }
             <div className="center-align">
-                <Link to={"/list?"+queryString} className="waves-effect waves-light btn-small" onClick={() => console.log(queryString)}>Search</Link>
+                <Link to={"/search?"+queryString} className="waves-effect waves-light btn-small" onClick={handleSearch}>Search</Link>
             </div>
         </div>
     </div>
