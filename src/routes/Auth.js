@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Login from '../views/login/Login.js';
 import Signup from '../views/login/Signup.js';
 import Reset from '../views/login/Reset.js';

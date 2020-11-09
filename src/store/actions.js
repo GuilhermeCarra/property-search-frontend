@@ -6,7 +6,8 @@ const Types = {
     LOGIN_SUCCESSFUL: "LOGIN_SUCCESSFUL",
     FETCH_DATA_STARTED: "FETCH_DATA_STARTED",
     FETCH_DATA_ERROR: "FETCH_DATA_ERROR",
-    FETCH_DATA_SUCCESSFUL: "FETCH_DATA_SUCCESSFUL"
+    FETCH_DATA_SUCCESSFUL: "FETCH_DATA_SUCCESSFUL",
+    CLEAR_ERROR: "CLEAR_ERROR"
 };
 
 // successful ✅
@@ -77,18 +78,23 @@ const loginSuccessful = (data) => ({
     },
 });
 
-const loginValidate = () => {
+// loading ⌛
+  const clearError = () => ({
+    type: Types.CLEAR_ERROR
+});
+
+const loginValidate = (options) => {
     return async function (dispatch) {
         dispatch(loginValidationStarted());
 
-        return axios
-            .get("TBD")
+        return axios(options)
             .then((response) => {
                 const { data } = response;
                 dispatch(loginSuccessful(data));
             })
             .catch((error) => {
-                dispatch(loginError(error));
+                dispatch(loginError(error.response.data));
+                setTimeout(() => dispatch(clearError()),6000);
             });
     };
 };
