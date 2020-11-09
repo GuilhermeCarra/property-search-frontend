@@ -15,7 +15,7 @@ export default function reducer(state = initialState, action) {
     case Types.LOGIN_VALIDATION:
         return {
             ...state,
-            loading: action.payload.users,
+            loading: action.payload.loading,
             error: action.payload.error,
         };
     case Types.LOGIN_ERROR:
@@ -50,9 +50,14 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             data: action.payload.data,
-            loading: action.payload.users,
+            loading: action.payload.loading,
             error: action.payload.error,
         };
+    case Types.CLEAR_ERROR:
+        return {
+            ...state,
+            error: null
+        }
 
     default:
       return state;
