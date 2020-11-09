@@ -51,7 +51,7 @@ function Login() {
           </div>
 
           <div className="col s12 m6 orange center white-text h-100 valign-wrapper">
-            <div className="section">
+            <div className="section col s12">
               <h2>Hello, friend!</h2>
               <p>Enter your personal details and start a journey with us</p>
               <Link to="/login/signup" className="waves-effect waves-light btn-large orange lighten-1">Sign up</Link>
