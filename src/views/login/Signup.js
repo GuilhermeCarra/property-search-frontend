@@ -24,6 +24,7 @@ function Signup() {
               <div className="section col s12">
                 <h2>Welcome back!</h2>
                 <p>To keep connected with us please login with your personal info</p>
+                <Link to="/" className="waves-effect waves-light btn-large orange darken-1">❮ Back</Link>
                 <Link to="/login" className="waves-effect waves-light btn-large orange lighten-1">Sign in</Link>
               </div>
             </div>

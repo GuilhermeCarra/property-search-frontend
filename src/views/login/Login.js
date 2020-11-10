@@ -53,10 +53,10 @@ function Login() {
             <div className="section col s12">
               <h2>Hello, friend!</h2>
               <p>Enter your personal details and start a journey with us</p>
+              <Link to="/" className="waves-effect waves-light btn-large orange darken-1">❮ Back</Link>
               <Link to="/login/signup" className="waves-effect waves-light btn-large orange lighten-1">Sign up</Link>
             </div>
           </div>
-
         </div>
       </div>
       {user && <Redirect to='/' />}
