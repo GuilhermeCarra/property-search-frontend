@@ -4,6 +4,7 @@ import store from "./store/store";
 import './App.scss';
 import Auth from './routes/Auth.js'
 import Search from './routes/Search.js'
+import Property from './routes/Property.js'
 import Home from './views/home/Main.js';
 import Header from './components/Header.js';
 
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/property">
+            <Property />
           </Route>
         </Switch>
       </Router>
