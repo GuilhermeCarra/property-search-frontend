@@ -28,7 +28,7 @@ function Signup() {
               </div>
             </div>
 
-            <div className="col s12 m6 center">
+            <div className="col s12 m6 center h-100 valign-wrapper">
               <div className="section">
                 <h2>Create Account</h2>
                 <p>or use your email for registration</p>
