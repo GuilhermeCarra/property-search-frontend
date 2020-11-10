@@ -29,7 +29,7 @@ function Filters() {
         <div className="col s12">
             <div className="row">
                 <div className="input-field col s8 m4">
-                    <input placeholder="Local" id="local" type="text" className="validate" onChange={(e) => setFormData({...formData, localization: e.target.value})}/>
+                    <input placeholder="Local" id="local" type="text" className="validate" onChange={(e) => setFormData({...formData, location: e.target.value})}/>
                     <label htmlFor="local"></label>
                     <div className="container section">
                         <div className="row">
