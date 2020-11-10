@@ -9,9 +9,9 @@ export const getHeader = function() {
 };
 
 // get token on localStorage
-export const getToken = function() {
-    const token = localStorage.getItem("access_token");
-    if (token) return token;
+export const getUser = function() {
+    const user = localStorage.getItem("user");
+    if (user) return JSON.parse(user);
     return null;
 };
 
