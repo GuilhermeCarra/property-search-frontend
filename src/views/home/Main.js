@@ -16,10 +16,10 @@ function Main() {
         <div className="col s12 center white-text h-100 bg-text">
           <div className="section">
             <h4>Let's find a home that is perfect for you.</h4>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="local" type="text" class="validate" onKeyPress={(e) => handleSubmit(e)}/>
-                <label for="local">Where do you want to live?</label>
+            <div className="row">
+              <div className="input-field col s12">
+                <input id="local" type="text" className="validate" onKeyPress={(e) => handleSubmit(e)}/>
+                <label htmlFor="local">Where do you want to live?</label>
               </div>
             </div>
           </div>
