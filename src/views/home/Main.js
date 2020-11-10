@@ -13,15 +13,17 @@ function Main() {
     <div className="orange lighten-2 searchpage-container">
       <div className="row">
 
-        <div className="col s12 center white-text h-100 bg-text">
+        <div className="col s12 center grey-text text-darken-4 h-100 z-depth-3">
           <div className="section">
-            <h4>Let's find a home that is perfect for you.</h4>
+          <div className="container">
+            <h4 className="bg-text">Let's find a home that is perfect for you.</h4>
             <div className="row">
               <div className="input-field col s12">
                 <input id="local" type="text" className="validate" onKeyPress={(e) => handleSubmit(e)}/>
-                <label htmlFor="local">Where do you want to live?</label>
+                <label htmlFor="local" className="font-bold">Where do you want to live?</label>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
