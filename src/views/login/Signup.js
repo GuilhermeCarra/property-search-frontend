@@ -41,7 +41,7 @@ function Signup() {
                 <div className="col s12">
                   <div className="input-field  col s8 offset-s2">
                     <input id="email" type="text" onChange={(e)=>setNewUser({...newUser, email: e.target.value})} />
-                    <label htmnlFor="email">Email</label>
+                    <label htmlFor="email">Email</label>
                   </div>
                 </div>
                 <div className="col s12">
