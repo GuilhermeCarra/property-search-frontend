@@ -8,6 +8,7 @@ const Types = {
     FETCH_DATA_ERROR: "FETCH_DATA_ERROR",
     FETCH_DATA_SUCCESSFUL: "FETCH_DATA_SUCCESSFUL",
     REGISTER_SUCCESSFUL: "REGISTER_SUCCESSFUL",
+    LOGOUT: "LOGOUT",
     CLEAR_ERROR: "CLEAR_ERROR",
     CLEAR_DATA: "CLEAR_DATA"
 };
@@ -97,6 +98,7 @@ const loginValidate = (options) => {
         return axios(options)
             .then((response) => {
                 const { data } = response;
+                localStorage.setItem("user", JSON.stringify(data.data));
                 dispatch(loginSuccessful(data));
             })
             .catch((error) => {
@@ -133,4 +135,14 @@ const registerValidate = (options) => {
     };
 };
 
-export { fetchInit, loginValidate, registerValidate, Types };
+// logout 🏃‍♂️
+const initLogout = () => ({
+    type: Types.LOGOUT,
+});
+
+const logout = (dispatch) => {
+    localStorage.removeItem("user");
+    return dispatch(initLogout());
+};
+
+export { fetchInit, loginValidate, registerValidate, logout, Types };

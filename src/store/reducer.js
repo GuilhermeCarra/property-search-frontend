@@ -1,8 +1,8 @@
 import { Types } from "./actions";
-import { getToken } from "../config/utils";
+import { getUser } from "../config/utils";
 
 const initialState = {
-  user: getToken(),
+  user: getUser(),
   data: null,
   loading: false,
   error: false,
@@ -37,6 +37,11 @@ export default function reducer(state = initialState, action) {
             data: action.payload.data,
             loading: action.payload.loading,
             error: action.payload.error,
+        };
+    case Types.LOGOUT:
+        return {
+            ...state,
+            user: null
         };
 
     // fetch data dispatch
