@@ -1,7 +1,7 @@
-// Domain URL
+// domain URL
 export const apiDomain = "http://localhost:3000/";
 
-// Auth URIs
+// auth URIs
 export const loginRequest = function({password, email}) {
     return {
         method: 'post',
@@ -23,4 +23,13 @@ export const registerRequest = function({password, email, name}) {
             password: password
         }
     }
+};
+
+// data requests
+export const locationsRequest = function() {
+    return [
+      {name: 'Barcelona', id: 1},
+      {name: 'Sitges', id: 2},
+      {name: 'Girona', id: 3}
+    ];
 };
