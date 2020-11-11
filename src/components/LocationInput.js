@@ -17,7 +17,6 @@ function LocationInput() {
     const [locations, setLocations] = useState(locationsRequest());
 
     function handleSubmit(e) {
-        console.log('pressed');
         if(e.key === 'Enter'){
           history.push(`/search?location=${e.target.value}`)
         }
