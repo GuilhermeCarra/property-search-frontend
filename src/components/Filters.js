@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { buildURLQuery} from '../config/utils';
 
-function Filters() {
+function Filters({search}) {
     const [queryString, setQueryString] = useState(null);
     const [propertyType, setPropertyType] = useState('Houses');
     const [extraFilters, setExtraFilters] = useState(false);
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({location: search.location});
     const [houseForm, setHouseForm] = useState({});
     const [officeForm, setOfficeForm] = useState({});
 
@@ -20,16 +20,12 @@ function Filters() {
         setQueryString(string);
     },[formData,officeForm,houseForm,propertyType]);
 
-    function handleSearch () {
-
-    }
-
     return(
     <div className="section">
         <div className="col s12">
             <div className="row">
                 <div className="input-field col s8 m4">
-                    <input placeholder="Local" id="local" type="text" className="validate" onChange={(e) => setFormData({...formData, location: e.target.value})}/>
+                    <input placeholder="Location" id="local" defaultValue={formData.location} type="text" className="validate" onChange={(e) => setFormData({...formData, location: e.target.value})}/>
                     <label htmlFor="local"></label>
                     <div className="container section">
                         <div className="row">
@@ -163,7 +159,7 @@ function Filters() {
             </div>
             }
             <div className="center-align">
-                <Link to={"/search?"+queryString} className="waves-effect waves-light btn-small" onClick={handleSearch}>Search</Link>
+                <Link to={"/search?"+queryString} className="waves-effect waves-light btn-small">Search</Link>
             </div>
         </div>
     </div>
