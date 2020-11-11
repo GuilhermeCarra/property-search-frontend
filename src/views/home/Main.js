@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import LocationInput from "../../components/LocationInput"
 
 function Main() {
