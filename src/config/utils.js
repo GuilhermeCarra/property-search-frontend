@@ -21,3 +21,15 @@ export const buildURLQuery = function (obj) {
           .map(pair => pair.map(encodeURIComponent).join('='))
           .join('&');
 }
+
+// query string parser
+export const queryParser = function (queryStr) {
+  let query = queryStr.substring(1);
+  let vars = query.split('&');
+  let queryObj = {};
+  for (let i = 0; i < vars.length; i++) {
+    let pair = vars[i].split('=');
+    queryObj[pair[0]] = pair[1];
+  }
+  return queryObj;
+}
