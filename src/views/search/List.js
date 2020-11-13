@@ -15,7 +15,7 @@ function List() {;
 
   const [params, setParams] = useState(queryParser(location));
 
-  const { loading, error, data } = useSelector((state) => state);
+  const { loading, status, data } = useSelector((state) => state);
 
   useEffect(() => setParams(queryParser(location)),[location]);
 
