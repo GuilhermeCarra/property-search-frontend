@@ -133,7 +133,6 @@ const registerValidate = (options) => {
             .then((response) => {
                 const { data } = response;
                 dispatch(registerSuccessful(data));
-                setTimeout(() => dispatch(clearData()),6000);
             })
             .catch((error) => {
                 dispatch(loginError(error.response.data));
