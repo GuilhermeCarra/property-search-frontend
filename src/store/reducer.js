@@ -55,7 +55,6 @@ export default function reducer(state = initialState, action) {
     case Types.FETCH_DATA_STARTED:
         return {
             ...state,
-            user: action.payload.user,
             loading: action.payload.loading,
             error: action.payload.error,
         };
