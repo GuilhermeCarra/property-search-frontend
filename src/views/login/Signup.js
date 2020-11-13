@@ -6,7 +6,8 @@ import { registerValidate } from "../../store/actions";
 
 function Signup() {
     const dispatch = useDispatch();
-    const { loading, error, data } = useSelector((state) => state);
+    
+    const { loading, error, status } = useSelector((state) => state);
 
     const [newUser, setNewUser] = useState({password: null, email: null, name: null});
 
@@ -52,10 +53,10 @@ function Signup() {
                   </div>
                 </div>
                 <span
-                  className={`status-msg white-text red z-depth-1 scale-transition ${error || loading || data ? "scale-in" : "scale-out" }`}
+                  className={`status-msg white-text red z-depth-1 scale-transition ${error || loading || status ? "scale-in" : "scale-out" }`}
                 >
                     {loading && <>Validating...</>}
-                    {data && <>{data}</>}
+                    {status && <>{status}</>}
                     {error && <>{error.message}</>}
                 </span>
                 <p></p>

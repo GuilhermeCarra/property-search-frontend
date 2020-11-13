@@ -9,7 +9,7 @@ function Header() {
   return(
   <nav>
     <div className="nav-wrapper grey lighten-3 z-depth-1">
-      <Link to="/" className="brand-logo orange-text left">Logo</Link>
+      <Link to="/" className="brand-logo orange-text left back-container">PropertySearch</Link>
       <ul id="nav-mobile" className="right">
         {user ? (
           <>
@@ -17,7 +17,7 @@ function Header() {
           </>
         ) : (
           <>
-            <li><Link to="/login">Sign in</Link></li>
+            <li className="black-text"><Link to="/login">Sign in</Link></li>
             <li><Link to="/login/signup">Sign up</Link></li>
           </>
         )}

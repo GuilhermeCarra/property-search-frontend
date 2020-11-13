@@ -10,15 +10,17 @@ const Types = {
     REGISTER_SUCCESSFUL: "REGISTER_SUCCESSFUL",
     LOGOUT: "LOGOUT",
     CLEAR_ERROR: "CLEAR_ERROR",
-    CLEAR_DATA: "CLEAR_DATA"
+    CLEAR_DATA: "CLEAR_DATA",
+    CLEAR_STATUS: "CLEAR_STATUS"
 };
 
 // successful ✅
-const fetchSuccessful = (users) => ({
+const fetchSuccessful = (data, page) => ({
     type: Types.FETCH_DATA_SUCCESSFUL,
     payload: {
-        users,
+        data: data,
         loading: false,
+        status: page
     },
 });
 
@@ -38,14 +40,14 @@ const fetchStarted = () => ({
     },
 });
 
-const fetchInit = (endpoint) => {
+const fetchInit = (options, page) => {
     return async function (dispatch) {
       dispatch(fetchStarted());
 
-      return axios(endpoint.url, endpoint.config)
+      return axios(options)
         .then((response) => {
           const { data } = response;
-          dispatch(fetchSuccessful(data));
+          dispatch(fetchSuccessful(data.data, page));
         })
         .catch((error) => {
           dispatch(fetchError(error));
@@ -89,6 +91,11 @@ const loginSuccessful = (data) => ({
 // Reset data from redux store
   const clearData = () => ({
     type: Types.CLEAR_DATA
+});
+
+// Reset data from redux store
+  const clearStatus = () => ({
+    type: Types.CLEAR_STATUS
 });
 
 const loginValidate = (options) => {
@@ -145,4 +152,4 @@ const logout = (dispatch) => {
     return dispatch(initLogout());
 };
 
-export { fetchInit, loginValidate, registerValidate, logout, Types };
+export { fetchInit, loginValidate, registerValidate, logout, clearData, clearStatus, Types };

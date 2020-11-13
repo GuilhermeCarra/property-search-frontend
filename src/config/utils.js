@@ -19,7 +19,8 @@ export const getUser = function() {
 export const buildURLQuery = function (obj) {
   return Object.entries(obj)
           .map(pair => pair.map(encodeURIComponent).join('='))
-          .join('&');
+          .join('&')
+          .replaceAll("false", "");
 }
 
 // query string parser
@@ -33,3 +34,10 @@ export const queryParser = function (queryStr) {
   }
   return queryObj;
 }
+
+// money formatter
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})

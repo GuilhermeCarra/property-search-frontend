@@ -3,8 +3,9 @@ import { getUser } from "../config/utils";
 
 const initialState = {
   user: getUser(),
-  data: null,
+  data: [],
   loading: false,
+  status: null,
   error: false,
 };
 
@@ -34,7 +35,7 @@ export default function reducer(state = initialState, action) {
     case Types.REGISTER_SUCCESSFUL:
         return {
             ...state,
-            data: action.payload.data,
+            status: action.payload.data,
             loading: action.payload.loading,
             error: action.payload.error,
         };
@@ -64,6 +65,7 @@ export default function reducer(state = initialState, action) {
             data: action.payload.data,
             loading: action.payload.loading,
             error: action.payload.error,
+            status: action.payload.status
         };
 
     case Types.CLEAR_ERROR:
@@ -75,6 +77,11 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             data: null
+        }
+    case Types.CLEAR_STATUS:
+        return {
+            ...state,
+            status: null
         }
 
     default:

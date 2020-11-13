@@ -13,9 +13,9 @@ function Filters({search}) {
     useEffect(() => {
         let string;
         if(propertyType === 'Houses') {
-            string = buildURLQuery({...houseForm, ...formData, type: 'house'});
+            string = buildURLQuery({...houseForm, ...formData, type_id: 1});
         } else {
-            string = buildURLQuery({...officeForm, ...formData, type: 'office'});
+            string = buildURLQuery({...officeForm, ...formData, type_id: 2});
         }
         setQueryString(string);
     },[formData,officeForm,houseForm,propertyType]);
@@ -51,7 +51,7 @@ function Filters({search}) {
                     <>
                         <div className="input-field col s6 m3">
                             <select className="browser-default" name="house" onChange={(e) => setHouseForm({...houseForm, format: e.target.value})}>
-                                <option value="" disabled selected>Choose a type</option>
+                                <option value="" defaultValue>Choose a type</option>
                                 <option value="apartment">Flat / Apartment</option>
                                 <option value="house">House</option>
                                 <option value="duplex">Duplex</option>
@@ -60,7 +60,7 @@ function Filters({search}) {
                         </div>
                         <div className="input-field col s6 m3">
                             <select className="browser-default" name="bedrooms" onChange={(e) => setHouseForm({...houseForm, bedrooms: e.target.value})}>
-                                <option value="" disabled selected>Bedrooms</option>
+                                <option value="" defaultValue>Bedrooms</option>
                                 <option value="0">0 (studio flat)</option>
                                 <option value="1">1 Bedroom</option>
                                 <option value="2">2 Bedrooms</option>
@@ -70,7 +70,7 @@ function Filters({search}) {
                         </div>
                         <div className="input-field col s6 m3">
                             <select className="browser-default" name="equipment" onChange={(e) => setHouseForm({...houseForm, equipment: e.target.value})}>
-                                <option value="" disabled selected>Equipment</option>
+                                <option value="" defaultValue>Equipment</option>
                                 <option value="indifferent">Indifferent</option>
                                 <option value="kitchen">Fully fitted kitchen</option>
                                 <option value="furnished">Furnished</option>
@@ -78,7 +78,7 @@ function Filters({search}) {
                         </div>
                         <div className="input-field col s6 m3">
                             <select className="browser-default" name="condition" onChange={(e) => setHouseForm({...houseForm, condition: e.target.value})}>
-                                <option value="" disabled selected>Condition</option>
+                                <option value="" defaultValue>Condition</option>
                                 <option value="new">New homes</option>
                                 <option value="good">Good condition</option>
                                 <option value="old">Need renovation</option>
@@ -89,7 +89,7 @@ function Filters({search}) {
                     <>
                         <div className="input-field col s12 m6">
                             <select className="browser-default" name="office" onChange={(e) => setOfficeForm({...officeForm, use: e.target.value})}>
-                                <option value="" disabled selected>Building use</option>
+                                <option value="" defaultValue>Building use</option>
                                 <option value="private">Private</option>
                                 <option value="co">Co-working</option>
                                 <option value="security">Security system</option>
