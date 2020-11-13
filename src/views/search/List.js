@@ -34,7 +34,7 @@ function List() {;
         <Filters search={params} />
       </div>
       <div className="row">
-        {loading && status === "search" ? (
+        {loading && status !== "search" ? (
           <Loading />
           ) : (
           data.length > 0 ? (
