@@ -20,8 +20,8 @@ function Login() {
       <div className="container login-card">
         <div className="row z-depth-3">
 
-          <div className="col s12 m6 center valign-wrapper h-100">
-            <div className="section">
+          <div className="col s12 m6 center h-100 valign-wrapper">
+            <div className="section col s12">
               <h2>Sign in</h2>
               <p>or use your account</p>
               <div className="col s12">
