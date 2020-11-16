@@ -1,6 +1,6 @@
 # Property Search Front-end
 
-This project was made with React.js, react-router and Redux to search selling properties(houses, offices) in a MongoDB database.
+This project was made with React.js, react-router and Redux to search selling properties (houses, offices) in a database.
 
 ## Available Scripts
 
